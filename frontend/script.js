@@ -30,7 +30,7 @@ if (SpeechRecognition && speechSynthesis) {
     };
 
     function sendCommandToBackend(command) {
-        fetch('http://127.0.0.1:5000/command', {
+        fetch('https://yugi123.pythonanywhere.com/command', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
