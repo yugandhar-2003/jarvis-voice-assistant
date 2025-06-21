@@ -1,0 +1,156 @@
+/* Import a cool, futuristic font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Define global variables for our color scheme */
+:root {
+    --primary-glow: #00aaff;
+    --secondary-glow: #00f6ff;
+    --bg-dark: #131a28;
+    --bg-light: #1a2a45;
+    --text-color: #e0e0e0;
+}
+
+/* --- Global Styles & Animated Background --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: var(--text-color);
+    /* Animated Gradient Background */
+    background: linear-gradient(-45deg, var(--bg-dark), var(--bg-light), var(--bg-dark), #2a3a55);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
+    overflow: hidden; /* Hide scrollbars */
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- The Main Container (Glassmorphism Effect) --- */
+.container {
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    /* Glassmorphism */
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* For Safari */
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding: 40px 30px;
+    /* Entry Animation */
+    animation: fadeInScaleUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+}
+
+@keyframes fadeInScaleUp {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* --- Typography & Neon Glow Effects --- */
+h1 {
+    font-size: 2.5em;
+    font-weight: 600;
+    color: #fff;
+    /* Neon Text Effect */
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px var(--primary-glow),
+        0 0 82px var(--primary-glow),
+        0 0 92px var(--primary-glow);
+    animation: flicker 3s infinite alternate;
+}
+
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow:
+            0 0 4px #fff,
+            0 0 11px #fff,
+            0 0 19px #fff,
+            0 0 40px var(--primary-glow),
+            0 0 80px var(--primary-glow),
+            0 0 90px var(--primary-glow);
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+
+p {
+    margin-top: 25px;
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+p strong {
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Make the output text stand out */
+span#outputCommand, span#outputResponse {
+    font-weight: 400;
+    color: var(--secondary-glow);
+    text-shadow: 0 0 5px var(--secondary-glow);
+}
+
+/* --- The Interactive "Pulse" Button --- */
+button {
+    font-size: 18px;
+    font-weight: 400;
+    padding: 12px 28px;
+    margin-top: 25px;
+    cursor: pointer;
+    border-radius: 50px; /* Pill shape */
+    border: 2px solid var(--primary-glow);
+    color: #fff;
+    background: transparent;
+    transition: all 0.3s ease;
+    /* Neon Box Shadow */
+    box-shadow: 0 0 10px var(--primary-glow), inset 0 0 10px var(--primary-glow);
+    /* Pulsing Animation */
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px var(--primary-glow), inset 0 0 10px var(--primary-glow);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px var(--primary-glow), inset 0 0 15px var(--primary-glow);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px var(--primary-glow), inset 0 0 10px var(--primary-glow);
+    }
+}
+
+button:hover, button:focus {
+    animation-play-state: paused; /* Stop pulsing on hover for a smoother interaction */
+    background: var(--primary-glow);
+    color: var(--bg-dark);
+    box-shadow: 0 0 30px var(--primary-glow);
+    transform: scale(1.1) translateY(-5px);
+}
+
+button:active {
+    transform: scale(1.05) translateY(0); /* Press down effect */
+    transition: transform 0.1s ease;
+}
